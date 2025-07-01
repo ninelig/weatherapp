@@ -34,7 +34,6 @@ body::before{
 .main-container{
 border:solid;
 width: 300px;
-height: 496px;
 z-index: 1;
 background: linear-gradient(to top, rgb(0,0,0,0.15), 
 rgb(255,255,255,0.15));
