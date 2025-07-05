@@ -29,7 +29,19 @@ body::before{
     backdrop-filter: blur(15px);
 }
 
+.hidden {
+    visibility: hidden;
+}
 
+#citySelection ul {
+    list-style: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 5px;
+}
 
 .main-container{
 border:solid;
@@ -42,6 +54,14 @@ backdrop-filter: blur(100px);
 padding:20px;
 }
 
+#favBtn {
+    cursor: pointer;
+}
+
+.city-sel-item {
+    text-transform: capitalize;
+    cursor: pointer;
+}
 
 .input-container{
     position: relative;
