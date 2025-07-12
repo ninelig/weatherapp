@@ -37,11 +37,11 @@ async function init() {
     if (city) {
 
         // Update the weather info
-        await updateWeatherInfo(city);
+       await updateWeatherInfo(city);
 
         // set correct icon for fav button
-        if (cityNameEl.textContent.trim()) {
-            favBtn.textContent = cityExists(cityNameEl.textContent.trim()) ? 'stars' : 'star';
+        if (getCityName()) {
+            favBtn.textContent = cityExists(getCityName()) ? 'stars' : 'star';
             favBtn.classList.remove('hidden');
         }
     }
@@ -66,9 +66,9 @@ function getLastViewedCity() {
 }
 
 function initEventListeners() {
-
+    // Favs
     favBtn.addEventListener('click', () => {
-        const cityName = cityNameEl.textContent.trim();
+        const cityName = getCityName();
 
         if (!cityName) {
             return;
@@ -95,6 +95,8 @@ function initEventListeners() {
 
     });
 
+
+    // Search by clicking on search button
     searchBtn.addEventListener('click', () => {
         if (cityInput.value.trim() != '') {
             updateWeatherInfo(cityInput.value);
@@ -105,6 +107,8 @@ function initEventListeners() {
         }
 
     })
+
+    // Search by Enter key
     cityInput.addEventListener('keydown', (event) => {
         if (event.key == 'Enter' &&
             cityInput.value.trim() != ''
@@ -117,7 +121,7 @@ function initEventListeners() {
 
 
 
-
+    // Temperature scale switcher
     unitToggleBtn.addEventListener('click', () => {
         const currentScale = getTemperatureScaleUnit();
         const newScale = (currentScale === 'C') ? 'F' : 'C';
@@ -131,10 +135,12 @@ function initEventListeners() {
     });
 
 
+    // Hide favs dropdown
     sectionsContainer.addEventListener('click', () => {
         hideCityDropdown();
     });
 
+    // Theme toggler
     themeTogglerEl.addEventListener('click', (evt) => {
 
         if (evt.currentTarget.checked) {
@@ -327,26 +333,27 @@ async function updateForecastsInfo(city) {
         }
     });
 
+    console.log('===', dailyForecasts)
+
     // Loop through each day
     Object.keys(dailyForecasts).forEach(date => {
         const dayData = dailyForecasts[date];
 
         let minTemp = Infinity;
         let maxTemp = -Infinity;
-        let noonForecast = null;
+        let forecast = null;
 
         dayData.forEach(entry => {
             const temp = Math.round(entry.main.temp);
             if (temp < minTemp) minTemp = temp;
             if (temp > maxTemp) maxTemp = temp;
 
-            //if (entry.dt_txt.includes('12:00:00')) {
-                noonForecast = entry;
-           // }
+            forecast = entry;
+         
         });
 
-        if (noonForecast) {
-            updateForecastItem(noonForecast, minTemp, maxTemp);
+        if (forecast) {
+            updateForecastItem(forecast, minTemp, maxTemp);
         }
     });
 }
