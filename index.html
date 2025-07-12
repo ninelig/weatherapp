@@ -1,108 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weather App</title>
-    <link rel="stylesheet" href="style.css">
-  
+    <link rel="stylesheet" href="css/style.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-   <script src="scriptoop.js" defer></script>
+    <!-- <script src="js/app.js" type="module" defer></script> -->
+    <script src="script_old.js" type="module" defer></script>
 
 </head>
+
 <body>
-    <main class="main-container">
+
+    <main id="main-container">
+        <div class="theme-switcher-container">
+            <div class="switch">
+                <input type="checkbox" class="switch__input" id="theme-switcher">
+                <label class="switch__label" for="theme-switcher">
+                    <span class="switch__indicator"></span>
+                    <span class="switch__decoration"></span>
+                </label>
+            </div>
+        </div>
         <header class="input-container">
-            <input class="city-input" placeholder="search City" type="text">
+            <input class="city-input" placeholder="Search City" type="text">
             <button class="search-btn">
                 <span class="material-symbols-outlined">
-                search
+                    search
                 </span>
             </button>
 
             <div id="citySelection"></div>
         </header>
-        <section class="weather-info">
-            <div class="location-date-container">
-                <div class="location"> 
-                    <span class="material-symbols-outlined">location_on</span>
-                    <!-- <h4 id="city-name" class="country-txt">Jakarta</h4> -->
-                    <h4 id="city-name" class="country-txt"></h4>
-                    <!-- <h5 class="current-date-txt regular-txt">Wed, 07 Aug</h5> -->
-                    <h5 class="current-date-txt regular-txt"></h5>
+        <div id="sections-container">
+            <section class="weather-info">
+                <div class="location-date-container">
+                    <div class="location">
+                        <a class="google-map-link" href="#" title="Show location on Google Maps">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </a>
+                        <h4 id="city-name" class="country-txt">Tbilisi</h4>
+                        <h5 class="current-date-txt regular-txt">Sat, 12 Jule</h5>
+                    </div>
+                    <span id="fav-btn" class="material-symbols-outlined hidden">stars</span>
                 </div>
-                 <span id="favBtn" class="material-symbols-outlined hidden">stars</span>
-            </div>
-            <div class="weather-summary-container">
-                <img src="assets/weather/clouds.svg" class="weather-summary-img">
-                <div class="weather-summary-info">
-                    <h1 class="temp-txt">29 °C</h1>
-                    <h3 class="condition-txt regular-txt">Clouds</h3>
-                </div>
-            </div>
-
-            <div class="weather-conditions-container">
-                <div class="condition-item">
-                    <span class="material-symbols-outlined">water_drop</span>
-                     <div class="condition-info">
-                        <h5 class="regular-txt">Humidity</h5>
-                        <h5 class="humidity-value-txt">55%</h5>
-                     </div>
+                <div class="weather-summary-container">
+                    <img src="assets/weather/clouds.svg" class="weather-summary-img">
+                    <div class="weather-summary-info">
+                        <div id="unit-toggle">Switch to °F</div>
+                        <h1 class="temp-txt">29 °C</h1>
+                        <h3 class="condition-txt regular-txt">Clouds</h3>
+                    </div>
                 </div>
 
-                <div class="condition-item">
-                    <span class="material-symbols-outlined">airwave</span>
-                     <div class="condition-info">
-                        <h5 class="regular-txt">Wind speed</h5>
-                        <h5 class="wind-value-txt">2 M/s</h5>
-                     </div>
-                </div>
+                <div class="weather-conditions-container">
+                    <div class="condition-item">
+                        <span class="material-symbols-outlined">water_drop</span>
+                        <div class="condition-info">
+                            <h5 class="regular-txt">Humidity</h5>
+                            <h5 class="humidity-value-txt">55%</h5>
+                        </div>
+                    </div>
+
+                    <div class="condition-item">
+                        <span class="material-symbols-outlined">airwave</span>
+                        <div class="condition-info">
+                            <h5 class="regular-txt">Wind speed</h5>
+                            <h5 class="wind-value-txt">2 M/s</h5>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="forecast-items-container">
                     <div class="forecast-item">
-                        <h5 class="forecast-item-date regular-txt">05 Aug</h5>
+                        <h5 class="forecast-item-date regular-txt">13 Jule</h5>
                         <img src="assets/weather/thunderstorm.svg" class="firecast-item-img">
                         <h5 class="forecast-item-temp">29 °C</h5>
                     </div>
-                     <div class="forecast-item">
-                        <h5 class="forecast-item-date regular-txt">05 Aug</h5>
+                    <div class="forecast-item">
+                        <h5 class="forecast-item-date regular-txt">14 Jule</h5>
                         <img src="assets/weather/thunderstorm.svg" class="firecast-item-img">
                         <h5 class="forecast-item-temp">29 °C</h5>
                     </div>
-                     <div class="forecast-item">
-                        <h5 class="forecast-item-date regular-txt">05 Aug</h5>
+                    <div class="forecast-item">
+                        <h5 class="forecast-item-date regular-txt">15 Jule</h5>
                         <img src="assets/weather/thunderstorm.svg" class="firecast-item-img">
                         <h5 class="forecast-item-temp">29 °C</h5>
                     </div>
-                     <div class="forecast-item">
-                        <h5 class="forecast-item-date regular-txt">05 Aug</h5>
+                    <div class="forecast-item">
+                        <h5 class="forecast-item-date regular-txt">16 Jule</h5>
                         <img src="assets/weather/thunderstorm.svg" class="firecast-item-img">
                         <h5 class="forecast-item-temp">29 °C</h5>
                     </div>
                 </div>
-        </section>
-        <section class="search-city section-message">
-           <img src="assets/message/search-city.png"> 
-           <div>
-            <h1>Search City</h1>
-            <h4 class="regular-txt">
-                Find out the weather conditions of the city
-            </h4>
-           </div>
-        </section>
+            </section>
+            <section class="search-city section-message">
+                <img src="assets/message/search-city.png">
+                <div>
+                    <h1>Search City</h1>
+                    <h4 class="regular-txt">
+                        Find out the weather conditions of the city
+                    </h4>
+                </div>
+            </section>
 
-        <section class="not-found section-message" style="display: none;">
-           <img src="assets/message/not-found.png"> 
-           <div>
-            <h1>Search City</h1>
-            <h4 class="regular-txt">
-                Find out the weather conditions of the city
-            </h4>
-           </div>
-        </section>
-
+            <section class="not-found section-message" style="display: none;">
+                <img src="assets/message/not-found.png">
+                <div>
+                    <h1>Search City</h1>
+                    <h4 class="regular-txt">
+                        Find out the weather conditions of the city
+                    </h4>
+                </div>
+            </section>
+        </div>
     </main>
+    <div class="preloader">
+        <img src="assets/preloader1.gif">
+    </div>
 </body>
+
 </html>
